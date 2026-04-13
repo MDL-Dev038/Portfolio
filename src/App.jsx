@@ -4,7 +4,7 @@ const DATA = {
   name: "Max De Luna",
   tagline: "Desarrollador Fullstack",
   description: "Creando soluciones web modernas y escalables.",
-  email: "max@deluna.dev",
+  email: "maxdelunaflores@gmail.com",
   github: "https://github.com/MDL-Dev038",
   linkedin: "https://linkedin.com/in/maxdeluna",
   skills: [
@@ -88,7 +88,17 @@ const globalStyles = `
     color: var(--text);
     font-family: var(--mono);
     overflow-x: hidden;
-    cursor: none;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    body { cursor: none; }
+  }
+
+  @media (hover: none), (pointer: coarse) {
+    a, button, input, textarea, [data-hover],
+    .project-card, .scroll-top, .nav-cta, .btn-primary,
+    .btn-secondary, .form-submit, .nav-hamburger { cursor: auto; }
+    a, button { cursor: pointer; }
   }
 
   ::selection { background: var(--green-dim); color: var(--green); }
@@ -165,12 +175,17 @@ const globalStyles = `
 `;
 
 function Cursor() {
+  const isTouch = typeof window !== "undefined" &&
+    window.matchMedia("(hover: none), (pointer: coarse)").matches;
+
   const cursorRef = useRef(null);
   const dotRef = useRef(null);
   const pos = useRef({ x: 0, y: 0 });
   const dot = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
+    if (isTouch) return;
+
     const move = (e) => {
       pos.current = { x: e.clientX, y: e.clientY };
     };
@@ -202,6 +217,8 @@ function Cursor() {
       cancelAnimationFrame(raf);
     };
   }, []);
+
+  if (isTouch) return null;
 
   return (
     <>
