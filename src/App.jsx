@@ -6,7 +6,7 @@ const DATA = {
   description: "Creando soluciones web modernas y escalables.",
   email: "maxdelunaflores@gmail.com",
   github: "https://github.com/MDL-Dev038",
-  linkedin: "https://linkedin.com/in/maxdeluna",
+  linkedin: "https://www.linkedin.com/in/max-alexander-de-luna-flores-b7a942191",
   skills: [
     { name: "React / Next.js", level: 95 },
     { name: "Node.js / Express", level: 90 },
